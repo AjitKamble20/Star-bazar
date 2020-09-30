@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5A1BE72B-607E-40A3-85B6-13AF50723556}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>StarBazar.Database</RootNamespace>
+    <AssemblyName>StarBazar.Database</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CbContext.cs" />
+    <Compile Include="Migrations\202009071155348_AddedNewTable.cs" />
+    <Compile Include="Migrations\202009071155348_AddedNewTable.designer.cs">
+      <DependentUpon>202009071155348_AddedNewTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009131715206_AddedNewcolumn.cs" />
+    <Compile Include="Migrations\202009131715206_AddedNewcolumn.designer.cs">
+      <DependentUpon>202009131715206_AddedNewcolumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009141105228_AddedisFeatured.cs" />
+    <Compile Include="Migrations\202009141105228_AddedisFeatured.designer.cs">
+      <DependentUpon>202009141105228_AddedisFeatured.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009151320552_AddedImageURL.cs" />
+    <Compile Include="Migrations\202009151320552_AddedImageURL.designer.cs">
+      <DependentUpon>202009151320552_AddedImageURL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009151333129_AddedcategoryIdInProduct.cs" />
+    <Compile Include="Migrations\202009151333129_AddedcategoryIdInProduct.designer.cs">
+      <DependentUpon>202009151333129_AddedcategoryIdInProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009151404503_AddedNewconfigclass.cs" />
+    <Compile Include="Migrations\202009151404503_AddedNewconfigclass.designer.cs">
+      <DependentUpon>202009151404503_AddedNewconfigclass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009161556279_AddedValidation.cs" />
+    <Compile Include="Migrations\202009161556279_AddedValidation.designer.cs">
+      <DependentUpon>202009161556279_AddedValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009171225204_RemovedValidation.cs" />
+    <Compile Include="Migrations\202009171225204_RemovedValidation.designer.cs">
+      <DependentUpon>202009171225204_RemovedValidation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009201549304_AddedNewTableOrderandOrderItem.cs" />
+    <Compile Include="Migrations\202009201549304_AddedNewTableOrderandOrderItem.designer.cs">
+      <DependentUpon>202009201549304_AddedNewTableOrderandOrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009210526165_AddedNewProperty.cs" />
+    <Compile Include="Migrations\202009210526165_AddedNewProperty.designer.cs">
+      <DependentUpon>202009210526165_AddedNewProperty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009221243400_AddedStatecityTable.cs" />
+    <Compile Include="Migrations\202009221243400_AddedStatecityTable.designer.cs">
+      <DependentUpon>202009221243400_AddedStatecityTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009221609081_AddedPicodetable.cs" />
+    <Compile Include="Migrations\202009221609081_AddedPicodetable.designer.cs">
+      <DependentUpon>202009221609081_AddedPicodetable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009221622290_AddedPincodeinuserdetal.cs" />
+    <Compile Include="Migrations\202009221622290_AddedPincodeinuserdetal.designer.cs">
+      <DependentUpon>202009221622290_AddedPincodeinuserdetal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009230705313_AdddedLocationTble.cs" />
+    <Compile Include="Migrations\202009230705313_AdddedLocationTble.designer.cs">
+      <DependentUpon>202009230705313_AdddedLocationTble.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009230949440_Addedcolumninlocation.cs" />
+    <Compile Include="Migrations\202009230949440_Addedcolumninlocation.designer.cs">
+      <DependentUpon>202009230949440_Addedcolumninlocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StarBazar.Entities\StarBazar.Entities.csproj">
+      <Project>{f16c9d1e-7483-4d55-a288-95cd945b5e3b}</Project>
+      <Name>StarBazar.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009071155348_AddedNewTable.resx">
+      <DependentUpon>202009071155348_AddedNewTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009131715206_AddedNewcolumn.resx">
+      <DependentUpon>202009131715206_AddedNewcolumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009141105228_AddedisFeatured.resx">
+      <DependentUpon>202009141105228_AddedisFeatured.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009151320552_AddedImageURL.resx">
+      <DependentUpon>202009151320552_AddedImageURL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009151333129_AddedcategoryIdInProduct.resx">
+      <DependentUpon>202009151333129_AddedcategoryIdInProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009151404503_AddedNewconfigclass.resx">
+      <DependentUpon>202009151404503_AddedNewconfigclass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009161556279_AddedValidation.resx">
+      <DependentUpon>202009161556279_AddedValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009171225204_RemovedValidation.resx">
+      <DependentUpon>202009171225204_RemovedValidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009201549304_AddedNewTableOrderandOrderItem.resx">
+      <DependentUpon>202009201549304_AddedNewTableOrderandOrderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009210526165_AddedNewProperty.resx">
+      <DependentUpon>202009210526165_AddedNewProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009221243400_AddedStatecityTable.resx">
+      <DependentUpon>202009221243400_AddedStatecityTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009221609081_AddedPicodetable.resx">
+      <DependentUpon>202009221609081_AddedPicodetable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009221622290_AddedPincodeinuserdetal.resx">
+      <DependentUpon>202009221622290_AddedPincodeinuserdetal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009230705313_AdddedLocationTble.resx">
+      <DependentUpon>202009230705313_AdddedLocationTble.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009230949440_Addedcolumninlocation.resx">
+      <DependentUpon>202009230949440_Addedcolumninlocation.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>

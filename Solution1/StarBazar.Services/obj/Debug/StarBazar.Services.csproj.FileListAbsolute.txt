@@ -1,0 +1,15 @@
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\StarBazar.Services.dll.config
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\StarBazar.Services.dll
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\StarBazar.Services.pdb
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\EntityFramework.dll
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\EntityFramework.SqlServer.dll
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\StarBazar.Database.dll
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\StarBazar.Entities.dll
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\StarBazar.Database.pdb
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\StarBazar.Database.dll.config
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\StarBazar.Entities.pdb
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\EntityFramework.xml
+D:\StarBazar\Solution1\StarBazar.Services\bin\Debug\EntityFramework.SqlServer.xml
+D:\StarBazar\Solution1\StarBazar.Services\obj\Debug\StarBazar.Services.csprojResolveAssemblyReference.cache
+D:\StarBazar\Solution1\StarBazar.Services\obj\Debug\StarBazar.Services.dll
+D:\StarBazar\Solution1\StarBazar.Services\obj\Debug\StarBazar.Services.pdb

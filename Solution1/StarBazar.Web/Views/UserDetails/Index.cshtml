@@ -1,0 +1,150 @@
+﻿@model StarBazar.Entities.UserDetails
+
+@{
+    ViewBag.Title = "Index";
+}
+@using (Html.BeginForm())
+{
+
+<section class="flat-row flat-iconbox">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-section">
+                    <h2 class="title">
+                        User Details
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StateId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.StateId, ViewBag.state as List<SelectListItem>, new { style = "width: 200px;" })
+
+                        @Html.ValidationMessageFor(model => model.StateId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DistrictId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.DistrictId, new SelectList(string.Empty, "Value", "Text"), "--Select City--", new { style = "width:200px" })
+
+                        @Html.ValidationMessageFor(model => model.DistrictId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PincodetId, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.PincodetId, new SelectList(string.Empty, "Value", "Text"), "--Select Pincode--", new { style = "width:200px" })
+
+                        @Html.ValidationMessageFor(model => model.PincodetId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form method="post" href="@Url.Action("CategoryTable", "Category")">
+                    <label>Search</label>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <input id="idSearch" class="form-control" type="search" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="button" id="btnSearch">Search</button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <label>District Name</label>
+                <input id="txtDistrict" class="form-control" type="text" />
+
+            </div>
+        </div>
+        <hr />
+       
+
+    </div>
+</section>
+
+}
+
+<script>
+    $(document).ready(function () {
+
+        $("#btnSearch").click(function () {
+            debugger;
+        var search = $("#idSearch").val();
+        $.ajax({
+            url:'@Url.Action("Index", "UserDetails")',
+            data: {
+                search: search
+            }
+
+        })
+            .done(function (data) {
+                $('#EditTableContainer').html(data)
+                $('#actionEditContainer').html('')
+            })
+
+            .fail(function (xmlHttpRequest, textStatus) {
+                alert('Fail');
+            });
+
+    });
+
+
+
+        $("#StateId").change(function () {
+            $("#DistrictId").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetDistrict")',
+                dataType: 'json',
+                data: { id: $("#StateId").val() },
+                success: function (district) {
+
+                    $.each(district, function (i, district) {
+                        $("#DistrictId").append('<option value="'
+                            + district.Value + '">'
+                            + district.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        })
+
+
+        $("#DistrictId").change(function () {
+            $("#PincodetId").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetPincode")',
+                dataType: 'json',
+                data: { id: $("#DistrictId").val() },
+                success: function (pincode) {
+                    $.each(pincode, function (i, pincode) {
+                        $("#PincodetId").append('<option value="'
+                            + pincode.Value + '">'
+                            + pincode.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed.' + ex);
+                }
+            });
+            return false;
+        })
+
+    });
+</script>  

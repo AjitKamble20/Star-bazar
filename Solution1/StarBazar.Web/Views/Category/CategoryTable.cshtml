@@ -1,0 +1,138 @@
+﻿@model List<Category>
+@{
+    ViewBag.Title = "CategoryTable";
+}
+
+
+<form method="post" href="@Url.Action("CategoryTable", "Category")">
+    <label>Search</label>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <input id="idSearch" class="form-control" type="search" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button type="button" id="btnSearch">Search</button>
+            <button id="idNew" type="button">New</button>
+        </div>
+    </div>
+
+</form>
+<h2>CategoryTable</h2>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Description</th>
+                <th class="font-weight-bold">Products</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <button class="btnEdit" data-id="@item.Id">Edit</button>
+                        <button class="btnDelete" data-id="@item.Id">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $("#btnSearch").click(function () {
+        var search = $("#idSearch").val();
+        $.ajax({
+            url:'@Url.Action("CategoryTable", "Category")',
+            data: {
+                search: search
+            }
+
+        })
+            .done(function (data) {
+                $('#EditTableContainer').html(data)
+                $('#actionEditContainer').html('')
+            })
+
+            .fail(function (xmlHttpRequest, textStatus) {
+                alert('Fail');
+            });
+
+    });
+
+    $("#idNew").click(function () {
+        $.ajax({
+            url: '@Url.Action("Create", "Category")',
+        })
+            .done(function (data) {
+                $('#actionEditContainer').html(data)
+                focusAction("actionEditContainer");
+            })
+
+            .fail(function (xmlHttpRequest, textStatus) {
+                alert('Fail');
+            });
+
+    });
+
+    $(".btnEdit").click(function () {
+        $.ajax({
+            url: '@Url.Action("Edit", "Category")',
+            data: {
+                Id: $(this).attr('data-id')
+            }
+        })
+            .done(function (data) {
+                $('#actionEditContainer').html(data)
+                focusAction("actionEditContainer");
+
+            })
+            .fail(function (xmlHttpRequest, textStatus) {
+                alert('Fail');
+            });
+
+    });
+
+    $(".btnDelete").click(function () {
+
+        swal({
+            title: "Confirmed?",
+            text: "Are you sure want to delete this product?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("Delete", "Category")',
+                        data: {
+                            Id: $(this).attr('data-id')
+                        }
+                    })
+                        .done(function (data) {
+                            $('#EditTableContainer').html(data)
+                        })
+
+                        .fail(function (xmlHttpRequest, textStatus) {
+                            alert('Fail');
+                        });
+                    swal("Record deleted succesfully", {
+                        icon: "success",
+                    });
+                }
+            });
+
+    });
+
+
+
+</script>

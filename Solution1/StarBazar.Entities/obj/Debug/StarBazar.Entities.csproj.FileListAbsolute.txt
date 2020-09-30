@@ -1,0 +1,5 @@
+D:\StarBazar\Solution1\StarBazar.Entities\bin\Debug\StarBazar.Entities.dll
+D:\StarBazar\Solution1\StarBazar.Entities\bin\Debug\StarBazar.Entities.pdb
+D:\StarBazar\Solution1\StarBazar.Entities\obj\Debug\StarBazar.Entities.dll
+D:\StarBazar\Solution1\StarBazar.Entities\obj\Debug\StarBazar.Entities.pdb
+D:\StarBazar\Solution1\StarBazar.Entities\obj\Debug\StarBazar.Entities.csprojResolveAssemblyReference.cache

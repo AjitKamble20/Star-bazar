@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    var imageURL = "/Content/images/placeholder-image.png";
+}
+
+<h2>Create</h2>
+<form id="createContainer">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label>Name <span class="text-danger">*</span></label>
+                <input class="form-control" name="Name" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input class="form-control" name="Description" />
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="hidden" id="ImageURL" name="ImageURL" />
+                <input class="form-control" id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
+            </div>
+            <div class="form-group">
+                <label>Is Featured?</label>
+                <div class="input-group">
+                    <div class="radio form-control">
+                        <label><input name="isFeatured" type="radio" value="True" /> True</label>
+                    </div>
+                    <div class="radio form-control">
+                        <label><input name="isFeatured" type="radio" value="False" /> False</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="thumb">
+                <img class="img-thumbnail img-fluid" id="categoryImage" src="@imageURL" />
+            </div>
+        </div>
+    </div>
+
+    <button id="btnSave" type="button" class="btn btn-danger">Save</button>
+    <button id="cancelBtn" type="button" class="btn btn-danger">Cancel</button>
+</form>
+
+<script>
+    $("#btnSave").click(function () {
+        debugger;
+        if ($("#createContainer").valid()) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Create", "Category")',
+                data: $('#createContainer').serialize()
+            })
+                .done(function (data) {
+                    $('#EditTableContainer').html(data);
+                    $('#actionEditContainer').html('');
+                })
+
+                .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                    swal({
+                        title: "Warning?",
+                        text: "Please Enter All Required Fields",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                });
+        }
+        else {
+            swal({
+                title: "Warning?",
+                text: "Please Enter All Required Fields",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+        }
+
+    });
+
+    $("#cancelBtn").click(function () {
+        $("#createContainer").html("");
+
+        focusAction("EditTableContainer");
+    });
+
+    $("#imageUpload").change(function () {
+        var element = this;
+
+        var formData = new FormData();
+
+        var totalFiles = element.files.length;
+
+        for (var i = 0; i < totalFiles; i++) {
+            var file = element.files[i];
+            formData.append("Photo", file);
+        }
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("UploadImage", "Shared")',
+            dataType: 'json',
+            data: formData,
+            contentType: false,
+            processData: false
+        })
+            .done(function (reposne) {
+                console.log(reposne);
+
+
+                if (reposne.Success) {
+                    $("#ImageURL").val(reposne.ImageURL);
+                    $("#categoryImage").attr("src", reposne.ImageURL);
+        }
+    })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+            alert('Fail');
+        });
+    });
+
+    $('#createContainer').validate({
+        rules: {
+            Name: {
+                required: true,
+                maxlength: 50,
+            },
+            Description: {
+                maxlength: 500
+            }
+        },
+        messages: {
+            Name: {
+                required: 'Name is required',
+                maxlength: 'Maximum Length is 50'
+            },
+            Description: {
+                maxlength: 'Maximum Length is 500'
+            }
+        }
+    });
+</script>
